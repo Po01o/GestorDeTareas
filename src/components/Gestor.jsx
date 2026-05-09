@@ -3,28 +3,21 @@ import GestorContext from '../GestorContext';
 import Agregar from './Agregar';
 import Lista from './Lista';
 import { GestorReducer, estadoInicial } from '../GestorReducer';
+import Filtro from './Filtro';
 
 
 function Gestor() {
     const [estado, dispatch] = useReducer(GestorReducer, estadoInicial);
 
     return (
-        <GestorContext.Provider value={{tareas: estado.tareas, dispatch}}>
+        <GestorContext.Provider value={{tareas: estado.tareas, filtro: estado.filtro, dispatch}}>
             <div>
                 <Agregar/>
+                <Filtro/>
                 <Lista/>
             </div>
         </GestorContext.Provider>
     );
-}
-
-const styles = {
-    calculadora: {
-        margin: '50px',
-        display: 'flex',
-        flexDirection: 'column',
-        flex: 1,
-    }
 }
 
 export default Gestor;

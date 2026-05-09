@@ -10,7 +10,7 @@ function Agregar(){
 
     const agregarTarea = () => {
         if(titulo.trim() === "" || descripcion.trim() === ""){
-            alert("Completa todos los campos");
+            alert("Debes llenar ambos campos");
             return;
         }
 
@@ -21,10 +21,7 @@ function Agregar(){
             completada: false
         };
 
-        dispatch({
-            tipo: "AGREGAR_TAREA",
-            tarea: nuevaTarea
-        });
+        dispatch({tipo: "AGREGAR_TAREA", tarea: nuevaTarea});
 
         setTitulo("");
         setDescripcion("");
@@ -34,23 +31,11 @@ function Agregar(){
         <div style={styles.contenedor}>
             <label htmlFor="titulo">Nueva Tarea:</label>
 
-            <textarea
-                id="titulo"
-                rows="2"
-                cols="20"
-                placeholder="Nombre"
-                value={titulo}
-                onChange={(e) => setTitulo(e.target.value)}
-            />
+            <textarea id="titulo" rows="2" cols="20" placeholder="Nombre" value={titulo} 
+            onChange={(e) => setTitulo(e.target.value)}/>
 
-            <textarea
-                id="descripcion"
-                rows="2"
-                cols="33"
-                placeholder="Descripcion"
-                value={descripcion}
-                onChange={(e) => setDescripcion(e.target.value)}
-            />
+            <textarea id="descripcion" rows="2" cols="33" placeholder="Descripcion" value={descripcion}
+                onChange={(e) => setDescripcion(e.target.value)}/>
 
             <button onClick={agregarTarea}>
                 Agregar

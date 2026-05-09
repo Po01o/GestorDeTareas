@@ -1,5 +1,6 @@
 const estadoInicial = {
-    tareas: []
+    tareas: [],
+    filtro: "Todas"
 };
 
 function GestorReducer(estado, accion){
@@ -20,14 +21,27 @@ function GestorReducer(estado, accion){
             return {
                 ...estado,
                 tareas: estado.tareas.map(tarea =>
-                    tarea.id === accion.id
-                    ? {
+                    tarea.id === accion.id ? {
                         ...tarea,
                         completada: !tarea.completada
-                    }
-                    : tarea
+                    } : tarea
                 )
             };
+        case "FILTRAR":
+            return {
+                ...estado,
+                filtro: accion.filtro
+            };
+        case "EDITAR_TAREA":
+            return {
+                ...estado, 
+                tareas: estado.tareas.map(tarea =>
+                    tarea.id === accion.tarea.id ? { 
+                        ...tarea, 
+                        ...accion.tarea 
+                    } : tarea
+                )
+            }
         default:
             return estado;
     }
