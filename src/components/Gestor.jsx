@@ -9,7 +9,7 @@ function Gestor() {
     const [estado, dispatch] = useReducer(GestorReducer, estadoInicial);
 
     return (
-        <GestorContext.Provider value={estado, dispatch}>
+        <GestorContext.Provider value={{tareas: estado.tareas, dispatch}}>
             <div>
                 <Agregar/>
                 <Lista/>
