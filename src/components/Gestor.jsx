@@ -7,7 +7,23 @@ import Filtro from './Filtro';
 
 
 function Gestor() {
-    const [estado, dispatch] = useReducer(GestorReducer, estadoInicial);
+    console.log("Entrando:");
+    //const [estado, dispatch] = useReducer(GestorReducer, estadoInicial)
+    const [estado, dispatch] = useReducer(GestorReducer, estadoInicial, (inicial) => {
+        const tareasCreadas = localStorage.getItem('tareasCreadas');
+        console.log("Cargando:", tareasCreadas);
+        try {
+            return tareasCreadas ? { ...inicial, tareas: JSON.parse(tareasCreadas) } : inicial;
+        } catch (error) {
+            console.log("Error al leer localStorage:", error);
+            return inicial;
+        }
+    });
+
+    useEffect(() => {
+        console.log("Guardando:", estado.tareas);
+        localStorage.setItem('tareasCreadas', JSON.stringify(estado.tareas));
+    }, [estado.tareas]);
 
     return (
         <GestorContext.Provider value={{tareas: estado.tareas, filtro: estado.filtro, dispatch}}>
