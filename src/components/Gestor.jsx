@@ -27,7 +27,8 @@ function Gestor() {
 
     return (
         <GestorContext.Provider value={{tareas: estado.tareas, filtro: estado.filtro, dispatch}}>
-            <div className="gestor-contenedor">
+            <div style={styles.app}>
+                <h1 style={styles.titulo}>Gestor de Tareas</h1>
                 <Agregar/>
                 <Filtro/>
                 <Lista/>
@@ -35,5 +36,25 @@ function Gestor() {
         </GestorContext.Provider>
     );
 }
+
+const styles = {
+  app: {
+    minHeight: "100vh",
+    backgroundColor: "#fdf6e3",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    padding: "30px 20px",
+    fontFamily: "Verdana, sans-serif"
+  },
+  titulo: {
+    fontSize: "2rem",
+    color: "#5a4200",
+    marginBottom: "20px",
+    borderBottom: "3px solid #e0b840",
+    paddingBottom: "8px",
+    letterSpacing: "1px"
+  }
+};
 
 export default Gestor;
