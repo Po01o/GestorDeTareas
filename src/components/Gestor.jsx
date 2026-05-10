@@ -27,7 +27,7 @@ function Gestor() {
 
     return (
         <GestorContext.Provider value={{tareas: estado.tareas, filtro: estado.filtro, dispatch}}>
-            <div>
+            <div className="gestor-contenedor">
                 <Agregar/>
                 <Filtro/>
                 <Lista/>

@@ -94,4 +94,4 @@ const styles = {
 
 };
 
-export default Lista
+export default Lista;

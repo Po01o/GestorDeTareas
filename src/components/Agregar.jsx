@@ -28,7 +28,7 @@ function Agregar(){
     };
 
     return (
-        <div style={styles.contenedor}>
+        <div style={styles.contenedor} className="gestor-agregar">
             <label htmlFor="titulo">Nueva Tarea:</label>
 
             <textarea id="titulo" rows="2" cols="20" placeholder="Nombre" value={titulo} 
@@ -57,4 +57,4 @@ const styles = {
 };
 
 
-export default Agregar
+export default Agregar;

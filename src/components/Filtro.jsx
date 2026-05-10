@@ -18,7 +18,7 @@ function Filtro(){
     });
 
     return (
-        <div>
+        <div className="gestor-filtro">
             <h2>Lista de tareas</h2>
             <select value={filtro} onChange={(e) => dispatch({tipo: "FILTRAR", filtro: e.target.value})}>
                 <option value="Todas">Todas las tareas</option>
@@ -30,4 +30,4 @@ function Filtro(){
     );
 }
 
-export default Filtro
+export default Filtro;
